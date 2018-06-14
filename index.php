@@ -662,7 +662,7 @@ class icit_srdb_ui extends icit_srdb {
                 }
 
                 // bootstrap WordPress
-                require( dirname( __FILE__ ) . "{$path_mod}/{$bootstrap_file}" );
+                require( $this->path . $bootstrap_file );
 
                 $this->set( 'path', ABSPATH );
 
