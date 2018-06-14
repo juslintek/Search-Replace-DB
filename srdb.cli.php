@@ -194,7 +194,10 @@ class icit_srdb_cli extends icit_srdb {
 				break;
 			case 'search_replace_table_end':
 				list( $table, $report ) = $args;
-				$time = number_format( $report[ 'end' ] - $report[ 'start' ], 8 );
+				$end = strpos($report['end'], ' ') !== false ? explode(' ', $report['end'])[0] : $report['end'];
+                		$start = strpos($report['end'], ' ') !== false ? explode(' ', $report['start'])[0] : $report['start'];
+				$time = number_format( $end - $start, 8 );
+				$time = number_format( ($report[ 'end' ] - $report[ 'start' ]), 8 );
 				$output .= "{$table}: {$report['rows']} rows, {$report['change']} changes found, {$report['updates']} updates made in {$time} seconds";
 				break;
 			case 'search_replace_end':
